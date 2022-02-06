@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="name" type="text" placeholder="your name" />
+    <input id="email" type="text" placeholder="your email" />
+    <button id="create">create profile</button>
+</body>
+
+<script>
+    const start = document.getElementById("create");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+
+    start.addEventListener("click", () => {
+        const payload = {
+            name: nameInput.value,
+            email: emailInput.value,
+        };
+
+        fetch("http://127.0.0.1:3000/create-profile", {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        });
+    });
+</script>
+
+</html>
